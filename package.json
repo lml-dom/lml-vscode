@@ -2,7 +2,7 @@
     "name": "lml",
     "displayName": "lml",
     "description": "LML syntax parser",
-    "version": "0.0.1",
+    "version": "0.1.0",
     "publisher": "gvarsanyi",
     "engines": {
         "vscode": "^1.29.0"

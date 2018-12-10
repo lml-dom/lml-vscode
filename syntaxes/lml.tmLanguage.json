@@ -14,8 +14,6 @@
           "name": "entity.name.tag.script.lml"
         },
         "3": {
-          "begin": "^",
-          "end": "^(?!(\\s*\\\\))",
           "patterns": [
             {
               "include": "#tag_attributes"
@@ -46,8 +44,6 @@
           "name": "entity.name.tag.style.lml"
         },
         "3": {
-          "begin": "^",
-          "end": "^(?!(\\s*\\\\))",
           "patterns": [
             {
               "include": "#tag_attributes"
@@ -72,10 +68,37 @@
       ]
     },
     {
+      "begin": "^(\\s*)(pre|textarea\\s*)(.*$)",
+      "beginCaptures": {
+        "2": {
+          "name": "entity.name.tag.lml"
+        },
+        "3": {
+          "patterns": [
+            {
+              "include": "#tag_attributes"
+            }
+          ]
+        }
+      },
+      "end": "^(?!(\\1\\s)|\\s*$)",
+      "patterns": [
+        {
+          "begin": "^\\s*\\\\",
+          "end": "^(?!(\\s*\\\\))",
+          "patterns": [
+            {
+              "include": "#tag_attributes"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "begin": "^(\\s*)([!A-Za-z][A-Za-z\\-_]+)(.*$)",
       "beginCaptures": {
         "2": {
-          "name": "entity.name.tag.style.lml"
+          "name": "entity.name.tag.lml"
         },
         "3": {
           "begin": "^",
