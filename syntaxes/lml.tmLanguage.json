@@ -1,0 +1,150 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "LML",
+  "patterns": [
+    {
+      "begin": "^(\\s*)[#$]",
+      "end": "^(?!(\\1\\s)|\\s*$)",
+      "name": "comment.block.lml"
+    },
+    {
+      "begin": "^(\\s*)(script\\s*)(.*$)",
+      "beginCaptures": {
+        "2": {
+          "name": "entity.name.tag.script.lml"
+        },
+        "3": {
+          "begin": "^",
+          "end": "^(?!(\\s*\\\\))",
+          "patterns": [
+            {
+              "include": "#tag_attributes"
+            }
+          ]
+        }
+      },
+      "end": "^(?!(\\1\\s)|\\s*$)",
+      "patterns": [
+        {
+          "begin": "^\\s*\\\\",
+          "end": "^(?!(\\s*\\\\))",
+          "patterns": [
+            {
+              "include": "#tag_attributes"
+            }
+          ]
+        },
+        {
+          "include": "source.js"
+        }
+      ]
+    },
+    {
+      "begin": "^(\\s*)(style\\s*)(.*$)",
+      "beginCaptures": {
+        "2": {
+          "name": "entity.name.tag.style.lml"
+        },
+        "3": {
+          "begin": "^",
+          "end": "^(?!(\\s*\\\\))",
+          "patterns": [
+            {
+              "include": "#tag_attributes"
+            }
+          ]
+        }
+      },
+      "end": "^(?!(\\1\\s)|\\s*$)",
+      "patterns": [
+        {
+          "begin": "^\\s*\\\\",
+          "end": "^(?!(\\s*\\\\))",
+          "patterns": [
+            {
+              "include": "#tag_attributes"
+            }
+          ]
+        },
+        {
+          "include": "source.css"
+        }
+      ]
+    },
+    {
+      "begin": "^(\\s*)([!A-Za-z][A-Za-z\\-_]+)(.*$)",
+      "beginCaptures": {
+        "2": {
+          "name": "entity.name.tag.style.lml"
+        },
+        "3": {
+          "begin": "^",
+          "end": "^(?!(\\s*\\\\))",
+          "patterns": [
+            {
+              "include": "#tag_attributes"
+            }
+          ]
+        }
+      },
+      "end": "^(?!(\\s*\\\\))",
+      "patterns": [
+        {
+          "begin": "^\\s*\\\\",
+          "end": "^(?!(\\s*\\\\))",
+          "patterns": [
+            {
+              "include": "#tag_attributes"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "begin": "^(\\s*)(;)",
+      "beginCaptures": {
+        "2": {
+          "name": "constant.character.escape.lml"
+        }
+      },
+      "end": "^(?!(\\1\\s)|\\s*$)",
+      "name": "markup.raw.lml"
+    }
+  ],
+  "repository": {
+    "strings": {
+      "name": "string.quoted.double.lml",
+      "begin": "('|\")",
+      "end": "('|\")",
+      "patterns": [
+        {
+          "name": "constant.character.escape.lml",
+          "match": "\\\\."
+        }
+      ]
+    },
+    "tag_attributes": {
+      "begin": "([A-Za-z\\-_]+)",
+      "beginCaptures": {
+        "0": {
+          "name": "entity.other.attribute-name.lml"
+        }
+      },
+      "end": "\\s*$",
+      "patterns": [
+        {          
+          "include": "#strings"
+        },
+        {
+          "match": "([A-Za-z\\-_]+)",
+          "name": "entity.other.attribute-name.lml"
+        },
+        {
+          "match": "(?<=\\=).*?(?=\\s|$)",
+          "name": "string.unquoted.lml"
+        }
+      ]
+    }
+  },
+  "scopeName": "source.lml"
+}
