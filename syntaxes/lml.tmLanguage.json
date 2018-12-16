@@ -19,8 +19,9 @@
       "name": "comment.block.lml"
     },
     "strings": {
-      "begin": "(?<=(\\=\"))(.)",
-      "end": "(\\0)\\s*$",
+      "begin": "(['\"])",
+      "end": "(\\1)\\s*",
+      "name": "string.quoted.double.lml",
       "patterns": [
         {
           "match": "\\\\."
