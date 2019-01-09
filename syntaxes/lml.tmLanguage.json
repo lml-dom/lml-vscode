@@ -126,6 +126,11 @@
           ]
         },
         {
+          "begin": "^(\\s*);",
+          "end": "^(?!(\\1\\s)|\\s*$)",
+          "name": "constant.character.escape.lml"
+        },
+        {
           "begin": "^(\\s*)([\\!A-Za-z][A-Za-z0-9_]*|[A-Za-z][A-Za-z0-9\\-_\\:]*[A-Za-z0-9])\\s*(.*$)",
           "beginCaptures": {
             "2": {
